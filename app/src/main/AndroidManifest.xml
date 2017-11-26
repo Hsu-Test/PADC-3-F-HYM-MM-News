@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="xyz.hsuyeemon.padc_3_f_hym_mm_news">
+    package="xyz.hsuyeemon.news">
 
     <application
         android:allowBackup="true"
@@ -8,9 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".MMNewsApp">
         <activity
-            android:name=".MainActivity"
+            android:name="xyz.hsuyeemon.news.activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
