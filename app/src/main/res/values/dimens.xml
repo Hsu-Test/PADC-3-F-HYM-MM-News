@@ -1,3 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="publication_logo_width">120dp</dimen>
+    <dimen name="publication_logo_height">90dp</dimen>
+    <dimen name="publication_margin_left">24dp</dimen>
+
 </resources>

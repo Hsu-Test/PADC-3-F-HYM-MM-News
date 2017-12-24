@@ -36,13 +36,13 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="90dp"
+                    android:layout_width="@dimen/publication_logo_width"
+                    android:layout_height="@dimen/publication_logo_height"
                     android:id="@+id/iv_publication_logo"
                     android:src="@drawable/img_dummy_publication"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="48dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginLeft="@dimen/publication_margin_left"
                     android:scaleType="centerCrop"
                     />
 
@@ -53,7 +53,7 @@
                     android:text="Eleven Media"
                     android:layout_toRightOf="@id/iv_publication_logo"
                     android:layout_alignTop="@id/iv_publication_logo"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginLeft="@dimen/publication_margin_left"
                     android:textSize="24sp"
                     style="@style/white_text_black_border"
                     />
