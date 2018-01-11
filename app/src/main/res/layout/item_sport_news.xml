@@ -1,6 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<android.support.v7.widget.CardView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginTop="4dp"
+    >
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:id="@+id/iv_top_news"
+                android:src="@drawable/ic_top_news"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_top_news"
+                android:text="Top News"
+                android:layout_toRightOf="@id/iv_top_news"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="8dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:id="@+id/iv_dummy_sport_news"
+                android:src="@drawable/iv_dummy_sport_news"
+                android:layout_below="@id/iv_top_news"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_brief1"
+                android:text="Real Madrid don't want to play beautiful football like Barcelona -Xavi"
+                android:layout_below="@id/iv_dummy_sport_news"
+                android:layout_alignLeft="@id/iv_top_news"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/primary_text"
+                android:textSize="20sp"
+                />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/iv_onefootball_logo"
+                android:src="@drawable/ic_onefootball_logo"
+                android:layout_below="@id/tv_news_brief1"
+                android:layout_marginTop="8dp"
+                android:layout_alignLeft="@id/iv_top_news"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_onefootball"
+                android:text="Onefootball"
+                android:layout_below="@id/tv_news_brief1"
+                android:layout_toRightOf="@id/iv_onefootball_logo"
+                android:layout_alignTop="@id/iv_onefootball_logo"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                />
+            <View
+                android:id="@+id/seperator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/iv_onefootball_logo"
+                android:layout_marginTop="8dp"
+                android:background="#AAA" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_news1"
+                android:layout_below="@id/seperator1"
+                android:layout_alignLeft="@id/iv_top_news">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_dummy_sport_news_images1"
+                    android:src="@drawable/iv_sport_news_images"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sport_news_brief"
+                    android:text="Nottingham Forest hero Eric Lichaj finally got that dog"
+                    android:layout_toRightOf="@id/iv_dummy_sport_news_images1"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_onefootball_logo2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images1"
+                    android:layout_alignStart="@+id/tv_sport_news_brief"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_onefootball_logo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onefootball"
+                    android:layout_toRightOf="@id/iv_onefootball_logo2"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images1"
+
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
+                    />
+            </RelativeLayout>
+
+
+
+            <View
+                android:id="@+id/seperator2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rl_news1"
+                android:layout_marginTop="8dp"
+                android:background="#AAA" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_news2"
+                android:layout_below="@id/seperator2"
+                android:layout_alignLeft="@id/iv_top_news">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_dummy_sport_news_images2"
+                    android:src="@drawable/iv_sport_news_images"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sport_news_brief2"
+                    android:text="Nottingham Forest hero Eric Lichaj finally got that dog"
+                    android:layout_toRightOf="@id/iv_dummy_sport_news_images2"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_onefootball_logo3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images2"
+                    android:layout_alignStart="@+id/tv_sport_news_brief2"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_onefootball_logo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onefootball"
+                    android:layout_toRightOf="@id/iv_onefootball_logo3"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images2"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/seperator3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rl_news1"
+                android:layout_marginTop="8dp"
+                android:background="#AAA" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_news3"
+                android:layout_below="@id/seperator3"
+                android:layout_alignLeft="@id/iv_top_news">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_dummy_sport_news_images3"
+                    android:src="@drawable/iv_sport_news_images"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sport_news_brief3"
+                    android:text="Nottingham Forest hero Eric Lichaj finally got that dog"
+                    android:layout_toRightOf="@id/iv_dummy_sport_news_images3"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_onefootball_logo4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images3"
+                    android:layout_alignStart="@+id/tv_sport_news_brief3"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_onefootball_logo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onefootball"
+                    android:layout_toRightOf="@id/iv_onefootball_logo4"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images3"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/seperator4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rl_news1"
+                android:layout_marginTop="8dp"
+                android:background="#AAA" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_news4"
+                android:layout_below="@id/seperator3"
+                android:layout_alignLeft="@id/iv_top_news">
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/iv_dummy_sport_news_images4"
+                    android:src="@drawable/iv_sport_news_images"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_sport_news_brief4"
+                    android:text="Nottingham Forest hero Eric Lichaj finally got that dog"
+                    android:layout_toRightOf="@id/iv_dummy_sport_news_images4"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_onefootball_logo5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images4"
+                    android:layout_alignStart="@+id/tv_sport_news_brief4"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/ic_onefootball_logo" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onefootball"
+                    android:layout_toRightOf="@id/iv_onefootball_logo5"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_alignBottom="@+id/iv_dummy_sport_news_images4"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="14sp"
+                    />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center"
+        android:background="#AAA" />
 </LinearLayout>

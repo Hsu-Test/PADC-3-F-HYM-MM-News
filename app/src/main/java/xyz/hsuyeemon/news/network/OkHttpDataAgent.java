@@ -3,6 +3,10 @@ package xyz.hsuyeemon.news.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +16,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import xyz.hsuyeemon.news.MMNewsApp;
+import xyz.hsuyeemon.news.data.vo.NewsVO;
+import xyz.hsuyeemon.news.events.LoadedNewsEvent;
+import xyz.hsuyeemon.news.network.responses.GetNewsResponse;
 
 /**
  * Created by Dell on 1/7/2018.
@@ -34,6 +41,7 @@ public class OkHttpDataAgent implements NewsDataAgent {
     @Override
     public void loadNews() {
         new LoadNewsTask().execute("http://padcmyanmar.com/padc-3/mm-news/apis/v1/getMMNews.php");
+
     }
 
     private static class LoadNewsTask extends AsyncTask<String, Void, String> {
@@ -65,7 +73,7 @@ public class OkHttpDataAgent implements NewsDataAgent {
                     responseString = response.body().string();
 
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Log.e(MMNewsApp.LOG_TAG, e.getMessage());
             }
 
@@ -75,6 +83,12 @@ public class OkHttpDataAgent implements NewsDataAgent {
         @Override
         protected void onPostExecute(String response) {
             super.onPostExecute(response);
-            //
+            //change string to object
+            Gson gson=new Gson();
+            GetNewsResponse getNewsResponse=gson.fromJson(response, GetNewsResponse.class);
+
+            LoadedNewsEvent event=new LoadedNewsEvent(getNewsResponse.getMmNews());
+            EventBus eventBus=EventBus.getDefault();
+            eventBus.post(event);
         }
     }}

@@ -8,17 +8,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyz.hsuyeemon.news.MMNewsApp;
 import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.adapters.NewsAdapter;
 import xyz.hsuyeemon.news.data.models.NewsModel;
 import xyz.hsuyeemon.news.delegates.NewsActionDelegate;
+import xyz.hsuyeemon.news.events.LoadedNewsEvent;
 
 public class MainActivity extends AppCompatActivity
         implements NewsActionDelegate{
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
+
 
     private NewsAdapter mNewsAdapter;
 
@@ -49,6 +57,18 @@ public class MainActivity extends AppCompatActivity
         rvNews.setAdapter(mNewsAdapter);
 
         NewsModel.getsObjInstance().loadNews();
+    }
+
+   @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -98,5 +118,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onTapFavoriteButton() {
 
+    }
+    /**
+     * event listen
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onNewsLoaded(LoadedNewsEvent event){
+        Log.d(MMNewsApp.LOG_TAG,"onNewsLoaded" + event.getNewsList().size());
+        mNewsAdapter.setNews(event.getNewsList());
     }
 }
