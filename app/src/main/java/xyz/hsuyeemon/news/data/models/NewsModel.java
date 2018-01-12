@@ -16,8 +16,8 @@ public class NewsModel {
     private NewsDataAgent mDataAgent;
     private NewsModel(){
       // mDataAgent= HttpUrlConnectionDataAgent.getNewsDataAgent();
-      // mDataAgent= OkHttpDataAgent.getObjInstance();
-        mDataAgent= RetrofitDataAgent.getsObjInstance();
+       mDataAgent= OkHttpDataAgent.getObjInstance();
+       // mDataAgent= RetrofitDataAgent.getsObjInstance();
     }
 
     public static NewsModel getsObjInstance(){

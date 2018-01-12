@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
+<RelativeLayout
+   android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_news_brief"
+        android:layout_marginLeft="8dp"
+        android:text="Immagration / Trump pans proposal as bringing people from 'shithole countries"
+        android:textSize="24sp"
+        android:textColor="@color/primary_text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/posted_hour"
+        android:text="9h"
+        android:layout_below="@id/tv_news_brief"
+        android:drawableLeft="@drawable/ic_access_time_24dp"
+        android:drawableTint="@color/secondary_text"
+        android:drawablePadding="4dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="8dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:id="@+id/iv_international_news"
+        android:src="@drawable/iv_international_news"
+        android:layout_below="@id/posted_hour"
+        />
+   <HorizontalScrollView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/hv_opinions"
+       android:layout_below="@id/iv_international_news">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_opinions1"
+            android:text="'Unking,diverse,elist' / Outcry over'shithole' remark"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            />
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_opinions2"
+            android:text="'Unking,diverse,elist' / Outcry over'shithole' remark"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            />
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_opinions3"
+            android:text="'Unking,diverse,elist' / Outcry over'shithole' remark"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textColor="@color/primary_text"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_get_nore"
+                android:text="Get more on this history"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Donald Trump"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                android:layout_below="@id/tv_get_nore"
+                android:layout_centerHorizontal="true"
+                android:background="@color/divider"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+   </HorizontalScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ll_others"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_below="@id/hv_opinions"
+        android:layout_marginTop="8dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="London/ Donald Trump cancels visit,blaming Obama"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                android:layout_margin="4dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/posted_hour2"
+                android:text="9h"
+                android:layout_below="@id/tv_news_brief"
+                android:drawableLeft="@drawable/ic_access_time_24dp"
+                android:drawableTint="@color/secondary_text"
+                android:drawablePadding="4dp"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="8dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/iv_other_news1"
+                android:src="@drawable/iv_other_news"/>
+        </LinearLayout>
+            <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="London/ Donald Trump cancels visit,blaming Obama"
+                android:textColor="@color/primary_text"
+                android:textSize="16sp"
+                android:layout_margin="4dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@id/posted_hour2"
+                android:text="9h"
+                android:layout_below="@id/tv_news_brief"
+                android:drawableLeft="@drawable/ic_access_time_24dp"
+                android:drawableTint="@color/secondary_text"
+                android:drawablePadding="4dp"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="8dp"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:id="@+id/iv_international_news_others"
+                android:src="@drawable/iv_other_news"
+                />
+
+        </LinearLayout>
+
+
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/seperator"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/primary_light"
+        android:layout_below="@id/ll_others"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_facebook"
+        android:text="Facebook/ NewsFeed overhauled in favor of 'meaningful social interactions'"
+        android:layout_below="@id/seperator"/>
+</RelativeLayout>
+</android.support.v7.widget.CardView>
