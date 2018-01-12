@@ -106,24 +106,27 @@
         android:orientation="horizontal"
         android:layout_below="@id/hv_opinions"
         android:layout_marginTop="8dp">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="London/ Donald Trump cancels visit,blaming Obama"
-                android:textColor="@color/primary_text"
+                android:id="@+id/tv_other_news"
+                android:text="London/Donald Trump cancels visit ,blaming Obama"
                 android:textSize="16sp"
-                android:layout_margin="4dp"
+                android:textColor="@color/primary_text"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/posted_hour2"
                 android:text="9h"
-                android:layout_below="@id/tv_news_brief"
+                android:layout_below="@id/tv_other_news"
                 android:drawableLeft="@drawable/ic_access_time_24dp"
                 android:drawableTint="@color/secondary_text"
                 android:drawablePadding="4dp"
@@ -134,28 +137,34 @@
                 />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/iv_other_news1"
-                android:src="@drawable/iv_other_news"/>
-        </LinearLayout>
-            <LinearLayout
+                android:layout_height="240dp"
+                android:id="@+id/iv_other_news"
+                android:src="@drawable/iv_other_news"
+                android:layout_below="@id/posted_hour2"
+                android:scaleType="centerCrop"/>
+
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_marginLeft="4dp"
+
+            >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="London/ Donald Trump cancels visit,blaming Obama"
-                android:textColor="@color/primary_text"
+                android:id="@+id/tv_other_news2"
+                android:text="London/Donald Trump cancels visit ,blaming Obama"
                 android:textSize="16sp"
-                android:layout_margin="4dp"
+                android:textColor="@color/primary_text"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@id/posted_hour2"
+                android:id="@+id/posted_hour3"
                 android:text="9h"
-                android:layout_below="@id/tv_news_brief"
+                android:layout_below="@id/tv_other_news2"
                 android:drawableLeft="@drawable/ic_access_time_24dp"
                 android:drawableTint="@color/secondary_text"
                 android:drawablePadding="4dp"
@@ -166,28 +175,33 @@
                 />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:id="@+id/iv_international_news_others"
+                android:layout_height="240dp"
+                android:id="@+id/iv_other_news2"
                 android:src="@drawable/iv_other_news"
-                />
+                android:layout_below="@id/posted_hour3"
+                android:scaleType="centerCrop"/>
 
-        </LinearLayout>
-
-
+        </RelativeLayout>
         </LinearLayout>
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/seperator"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/primary_light"
-        android:layout_below="@id/ll_others"/>
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:id="@+id/seperator"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@color/primary_light"
+    android:layout_below="@id/ll_others"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_facebook"
-        android:text="Facebook/ NewsFeed overhauled in favor of 'meaningful social interactions'"
-        android:layout_below="@id/seperator"/>
+        android:text="Facebook NewsFeed overhauled in favor of \'meaningful social interactions\'"
+        android:layout_below="@id/seperator"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"/>
+
+
 </RelativeLayout>
 </android.support.v7.widget.CardView>
