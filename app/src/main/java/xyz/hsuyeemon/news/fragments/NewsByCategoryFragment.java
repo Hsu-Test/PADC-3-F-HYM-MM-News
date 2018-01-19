@@ -21,6 +21,7 @@ import xyz.hsuyeemon.news.MMNewsApp;
 import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.adapters.NewsAdapter;
 import xyz.hsuyeemon.news.data.models.NewsModel;
+import xyz.hsuyeemon.news.data.vo.NewsVO;
 import xyz.hsuyeemon.news.delegates.NewsActionDelegate;
 import xyz.hsuyeemon.news.events.LoadedNewsEvent;
 
@@ -66,7 +67,7 @@ public class NewsByCategoryFragment extends Fragment implements NewsActionDelega
     }
 
     @Override
-    public void onTapNewsItem() {
+    public void onTapNewsItem(NewsVO tappedNews) {
 
     }
 

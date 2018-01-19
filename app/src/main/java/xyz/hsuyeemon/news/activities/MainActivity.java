@@ -24,6 +24,7 @@ import xyz.hsuyeemon.news.MMNewsApp;
 import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.adapters.NewsAdapter;
 import xyz.hsuyeemon.news.data.models.NewsModel;
+import xyz.hsuyeemon.news.data.vo.NewsVO;
 import xyz.hsuyeemon.news.delegates.NewsActionDelegate;
 import xyz.hsuyeemon.news.events.LoadedNewsEvent;
 
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity
         rvNews.setAdapter(mNewsAdapter);
 
         NewsModel.getsObjInstance().loadNews();
-    }
+
+            }
 
    @Override
     protected void onStart() {
@@ -100,8 +102,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onTapNewsItem() {
+    public void onTapNewsItem(NewsVO tappedNews) {
         Intent intent = new Intent(getApplicationContext(), NewsDetailsActivity.class);
+        //get key from activity
+        intent.putExtra("news_id",tappedNews.getNewsId());
         startActivity(intent);   //launch
     }
 

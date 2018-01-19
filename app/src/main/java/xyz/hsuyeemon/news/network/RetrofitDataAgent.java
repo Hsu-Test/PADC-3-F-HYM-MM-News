@@ -23,6 +23,8 @@ public class RetrofitDataAgent implements NewsDataAgent {
 
     private static RetrofitDataAgent sObjInstance;
 
+    private NewsApi mNewsApi;
+
     public static RetrofitDataAgent getsObjInstance() {
         if (sObjInstance==null){
             sObjInstance=new RetrofitDataAgent();
@@ -31,11 +33,6 @@ public class RetrofitDataAgent implements NewsDataAgent {
     }
 
     private RetrofitDataAgent(){
-
-    }
-
-    @Override
-    public void loadNews() {
         OkHttpClient httpClient = new OkHttpClient.Builder() //1.
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
@@ -47,15 +44,19 @@ public class RetrofitDataAgent implements NewsDataAgent {
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .client(httpClient)
                 .build();
+        mNewsApi=retrofit.create(NewsApi.class);
+    }
 
-        NewsApi newsApi=retrofit.create(NewsApi.class);
+    @Override
+    public void loadNews() {
 
-        Call<GetNewsResponse> getNewsResponseCall=newsApi.loadNews(1,"http://padcmyanmar.com/padc-3/mm-news/apis/v1/");
+
+        Call<GetNewsResponse> getNewsResponseCall=mNewsApi.loadNews(1,"b002c7e1a528b7cb460933fc2875e916");
         getNewsResponseCall.enqueue(new Callback<GetNewsResponse>() {
             @Override
             public void onResponse(Call<GetNewsResponse> call, Response<GetNewsResponse> response) {
                 GetNewsResponse getNewsResponse=response.body();
-                if (getNewsResponse.getMmNews()==null) {
+                if (getNewsResponse!= null) {
                     LoadedNewsEvent event = new LoadedNewsEvent(getNewsResponse.getMmNews());
                     EventBus.getDefault().post(event);
                 }
@@ -66,8 +67,6 @@ public class RetrofitDataAgent implements NewsDataAgent {
 
             }
         });
-
-
 
     }
 }
