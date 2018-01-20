@@ -11,5 +11,7 @@ public interface NewsDataAgent {
      */
     void loadNews();
 
+    void loginUser(String email, String password);
+
 
 }

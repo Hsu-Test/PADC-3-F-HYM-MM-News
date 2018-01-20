@@ -2,8 +2,12 @@ package xyz.hsuyeemon.news.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,11 +29,13 @@ import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.adapters.NewsAdapter;
 import xyz.hsuyeemon.news.data.models.NewsModel;
 import xyz.hsuyeemon.news.data.vo.NewsVO;
+import xyz.hsuyeemon.news.delegates.BeforeLoginDelegate;
 import xyz.hsuyeemon.news.delegates.NewsActionDelegate;
 import xyz.hsuyeemon.news.events.LoadedNewsEvent;
+import xyz.hsuyeemon.news.viewpods.BeforeLoginViewPod;
 
 public class MainActivity extends AppCompatActivity
-        implements NewsActionDelegate{
+        implements NewsActionDelegate,BeforeLoginDelegate{
 
     @BindView(R.id.rv_news)
     RecyclerView rvNews;
@@ -40,6 +46,12 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
+    @BindView(R.id.navigation_view)
+    NavigationView navigationView;
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
 
     private NewsAdapter mNewsAdapter;
 
@@ -49,6 +61,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this,this);
         setSupportActionBar(toolbar);
+        if(getSupportActionBar()!=null) {
+            getSupportActionBar().setTitle(R.string.title_all_news);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze_24dp);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         mNewsAdapter=new NewsAdapter(this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),
@@ -59,7 +76,23 @@ public class MainActivity extends AppCompatActivity
 
         NewsModel.getsObjInstance().loadNews();
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.menu_news_by_categories){
+                    Intent intent=NewsByCategoryActivity.newIntent(getApplicationContext());
+                    startActivity(intent);
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
+
+                return false;
             }
+        });
+
+        BeforeLoginViewPod vpBeforeLogin = (BeforeLoginViewPod) navigationView.getHeaderView(0);
+        vpBeforeLogin.setmDelegate(this);
+
+    }
 
    @Override
     protected void onStart() {
@@ -90,6 +123,9 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if(id==android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START);
         }
 
         return super.onOptionsItemSelected(item);
@@ -130,5 +166,18 @@ public class MainActivity extends AppCompatActivity
     public void onNewsLoaded(LoadedNewsEvent event){
         Log.d(MMNewsApp.LOG_TAG,"onNewsLoaded" + event.getNewsList().size());
         mNewsAdapter.setNews(event.getNewsList());
+    }
+
+    @Override
+    public void onTapToLogin() {
+        Intent intent = AccountControlActivity.newIntentLogin(getApplicationContext());
+
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapToRegister() {
+        Intent intent = AccountControlActivity.newIntentRegister(getApplicationContext());
+        startActivity(intent);
     }
 }

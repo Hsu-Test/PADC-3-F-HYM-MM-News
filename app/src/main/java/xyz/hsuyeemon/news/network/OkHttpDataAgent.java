@@ -44,6 +44,11 @@ public class OkHttpDataAgent implements NewsDataAgent {
 
     }
 
+    @Override
+    public void loginUser(String email, String password) {
+
+    }
+
     private static class LoadNewsTask extends AsyncTask<String, Void, String> {
 
         @Override

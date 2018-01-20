@@ -69,5 +69,10 @@ public class RetrofitDataAgent implements NewsDataAgent {
         });
 
     }
+
+    @Override
+    public void loginUser(String email, String password) {
+
+    }
 }
 
