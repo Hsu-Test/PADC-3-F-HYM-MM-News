@@ -8,7 +8,8 @@
     <string name="menu_item_news_by_categories">News By Catagories</string>
     <string name="lbl_to_register">Register ပြုလုပ်ရန်</string>
     <string name="lbl_to_login">Login ၀င်ရန်</string>
-    <string name="btn_forgot_password"><![CDATA[<b><i><u>Forgot မေ့သွားလို့</u></i></b>]]></string>
-    <string name="btn_register"><i><b><u>New Sales?Register</u></b></i></string>
+    <string name="btn_forgot_password"><![CDATA[<b><i><u>password မေ့သွားလို့</u></i></b>]]></string>
+    <string name="btn_register"><![CDATA[<i><b><u>Register ပြုလုပ်ရန်<</u></b></i>]]></string>
     <string name="btn_back_to_login"><i><u>Back to Login</u></i></string>
+    <string name="lbl_logout">Logout</string>
 </resources>

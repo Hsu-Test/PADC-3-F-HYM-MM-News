@@ -29,8 +29,8 @@
         android:layout_alignLeft="@id/iv_user_profile"
         android:layout_below="@id/iv_user_profile"
         android:text="John Doe"
-        android:textColor="@color/white_full"
-        android:textSize="@dimen/text_regular" />
+        android:textSize="@dimen/text_regular"
+        style="@style/white_text_black_border"/>
 
     <TextView
         android:id="@+id/tv_phone_no"
@@ -41,7 +41,17 @@
         android:text="+959 448500348"
         android:textColor="@color/white_full"
         android:textSize="@dimen/text_regular"
-        android:layout_marginTop="@dimen/margin_medium"/>
+        android:layout_marginTop="@dimen/margin_medium"
+        style="@style/white_text_black_border"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_to_logout"
+        android:text="@string/lbl_logout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_medium_2"/>
 
 
 </xyz.hsuyeemon.news.viewpods.LoginUserViewPod>

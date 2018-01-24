@@ -1,14 +1,22 @@
 package xyz.hsuyeemon.news.viewpods;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xyz.hsuyeemon.news.R;
+import xyz.hsuyeemon.news.data.models.LoginUserModel;
+import xyz.hsuyeemon.news.data.models.NewsModel;
 import xyz.hsuyeemon.news.delegates.BeforeLoginDelegate;
+import xyz.hsuyeemon.news.network.NewsDataAgent;
 
 /**
  * Created by Dell on 1/20/2018.
@@ -17,7 +25,10 @@ import xyz.hsuyeemon.news.delegates.BeforeLoginDelegate;
 public class BeforeLoginViewPod extends RelativeLayout {
 
     private BeforeLoginDelegate mDelegate;
+    private EditText etEmailOrPhone;
+    private EditText etPassword;
 
+    private NewsModel mModel;
 
     public BeforeLoginViewPod(Context context) {
         super(context);
@@ -53,4 +64,6 @@ public class BeforeLoginViewPod extends RelativeLayout {
     public void onTapToRegister(View view){  //view => the item we clicked
         mDelegate.onTapToRegister();
     }
+
+
 }

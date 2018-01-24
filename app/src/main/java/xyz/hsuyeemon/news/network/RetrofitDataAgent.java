@@ -15,7 +15,9 @@ package xyz.hsuyeemon.news.network;
         import retrofit2.Response;
         import retrofit2.Retrofit;
         import retrofit2.converter.gson.GsonConverterFactory;
+        import xyz.hsuyeemon.news.events.SuccessLoginEvent;
         import xyz.hsuyeemon.news.events.LoadedNewsEvent;
+        import xyz.hsuyeemon.news.network.responses.GetLoginUserResponse;
         import xyz.hsuyeemon.news.network.responses.GetNewsResponse;
 
 
@@ -62,6 +64,7 @@ public class RetrofitDataAgent implements NewsDataAgent {
                 }
             }
 
+
             @Override
             public void onFailure(Call<GetNewsResponse> call, Throwable t) {
 
@@ -71,8 +74,43 @@ public class RetrofitDataAgent implements NewsDataAgent {
     }
 
     @Override
-    public void loginUser(String email, String password) {
+    public void loadLoginUser(String phoneNo, String password) {
 
+        Call<GetLoginUserResponse> getLoginUserResponseCall = mNewsApi.loadLoginUser(phoneNo,password);
+        getLoginUserResponseCall.enqueue(new Callback<GetLoginUserResponse>() { //response capture
+            @Override
+            public void onResponse(Call<GetLoginUserResponse> call, Response<GetLoginUserResponse> response) {
+                GetLoginUserResponse getLoginUserResponse = response.body();
+                if(getLoginUserResponse != null){
+                    SuccessLoginEvent event = new SuccessLoginEvent(getLoginUserResponse.getLoginUser());
+                    EventBus.getDefault().post(event);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<GetLoginUserResponse> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void registerUser(String name, String phoneNo, String password) {
+
+        Call<GetLoginUserResponse> getRegisterUserResponseCall = mNewsApi.registerUser(name,phoneNo,password);
+        getRegisterUserResponseCall.enqueue(new Callback<GetLoginUserResponse>() {
+            @Override
+            public void onResponse(Call<GetLoginUserResponse> call, Response<GetLoginUserResponse> response) {
+                GetLoginUserResponse getRegisterUserResponse = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<GetLoginUserResponse> call, Throwable t) {
+
+            }
+        });
     }
 }
 

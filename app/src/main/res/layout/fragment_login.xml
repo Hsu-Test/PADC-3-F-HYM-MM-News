@@ -42,6 +42,7 @@
             android:textColorHint="@color/primary"
             android:inputType="textPassword"
             android:drawableRight="@drawable/ic_visibility_black_24dp"
+            android:drawableTint="@color/primary"
             />
 
     </android.support.design.widget.TextInputLayout>

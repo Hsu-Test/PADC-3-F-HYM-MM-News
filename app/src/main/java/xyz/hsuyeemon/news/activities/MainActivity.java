@@ -1,5 +1,6 @@
 package xyz.hsuyeemon.news.activities;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -27,15 +30,18 @@ import butterknife.OnClick;
 import xyz.hsuyeemon.news.MMNewsApp;
 import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.adapters.NewsAdapter;
+import xyz.hsuyeemon.news.data.models.LoginUserModel;
 import xyz.hsuyeemon.news.data.models.NewsModel;
 import xyz.hsuyeemon.news.data.vo.NewsVO;
 import xyz.hsuyeemon.news.delegates.BeforeLoginDelegate;
+import xyz.hsuyeemon.news.delegates.LoginUserDelegate;
 import xyz.hsuyeemon.news.delegates.NewsActionDelegate;
 import xyz.hsuyeemon.news.events.LoadedNewsEvent;
+import xyz.hsuyeemon.news.viewpods.AccountControlViewPod;
 import xyz.hsuyeemon.news.viewpods.BeforeLoginViewPod;
 
 public class MainActivity extends AppCompatActivity
-        implements NewsActionDelegate,BeforeLoginDelegate{
+        implements NewsActionDelegate,BeforeLoginDelegate,LoginUserDelegate{
 
     @BindView(R.id.rv_news)
     RecyclerView rvNews;
@@ -52,8 +58,9 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-
     private NewsAdapter mNewsAdapter;
+
+    private AccountControlViewPod vpAccountConrol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +96,11 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        BeforeLoginViewPod vpBeforeLogin = (BeforeLoginViewPod) navigationView.getHeaderView(0);
-        vpBeforeLogin.setmDelegate(this);
+        //BeforeLoginViewPod vpBeforeLogin = (BeforeLoginViewPod) navigationView.getHeaderView(0);
+        //vpBeforeLogin.setmDelegate(this);
+        vpAccountConrol = (AccountControlViewPod)navigationView.getHeaderView(0);
+        vpAccountConrol.setDelegate((BeforeLoginDelegate) this);
+        vpAccountConrol.setDelegate((LoginUserDelegate)this);
 
     }
 
@@ -170,6 +180,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTapToLogin() {
+
         Intent intent = AccountControlActivity.newIntentLogin(getApplicationContext());
 
         startActivity(intent);
@@ -179,5 +190,10 @@ public class MainActivity extends AppCompatActivity
     public void onTapToRegister() {
         Intent intent = AccountControlActivity.newIntentRegister(getApplicationContext());
         startActivity(intent);
+    }
+
+    @Override
+    public void onTapLogout() {
+        LoginUserModel.getObjInstance().logout();
     }
 }
