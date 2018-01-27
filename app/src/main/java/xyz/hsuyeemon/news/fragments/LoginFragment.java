@@ -1,5 +1,6 @@
 package xyz.hsuyeemon.news.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import xyz.hsuyeemon.news.R;
 import xyz.hsuyeemon.news.data.models.LoginUserModel;
+import xyz.hsuyeemon.news.delegates.LoginScreenDelegate;
 import xyz.hsuyeemon.news.events.SuccessLoginEvent;
 
 /**
@@ -32,6 +34,8 @@ public class LoginFragment extends Fragment {
     @BindView(R.id.et_password)
     EditText etPassword;
 
+    private LoginScreenDelegate mLoginScreenDelegate;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,7 +49,7 @@ public class LoginFragment extends Fragment {
     public void onTapLogin(View view) {  //represent login button
         String phoneNo = etEmailOrPhone.getText().toString();
         String password = etPassword.getText().toString();
-        LoginUserModel.getObjInstance().loginUser(phoneNo,password);
+        LoginUserModel.getObjInstance(getContext()).loginUser(getContext(),phoneNo,password);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -68,5 +72,18 @@ public class LoginFragment extends Fragment {
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mLoginScreenDelegate = (LoginScreenDelegate) context;
+    }
+
+    @OnClick(R.id.btn_sale_register)
+    public void onTapBtnSaleRegister(View view){
+        mLoginScreenDelegate.onTapSaleRegister();
     }
 }

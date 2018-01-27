@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this,this);
+
         setSupportActionBar(toolbar);
         if(getSupportActionBar()!=null) {
             getSupportActionBar().setTitle(R.string.title_all_news);
@@ -194,6 +195,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTapLogout() {
-        LoginUserModel.getObjInstance().logout();
+        LoginUserModel.getObjInstance(getApplicationContext()).logout();
     }
 }

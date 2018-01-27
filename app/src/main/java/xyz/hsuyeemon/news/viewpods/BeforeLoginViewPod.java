@@ -25,10 +25,7 @@ import xyz.hsuyeemon.news.network.NewsDataAgent;
 public class BeforeLoginViewPod extends RelativeLayout {
 
     private BeforeLoginDelegate mDelegate;
-    private EditText etEmailOrPhone;
-    private EditText etPassword;
 
-    private NewsModel mModel;
 
     public BeforeLoginViewPod(Context context) {
         super(context);
@@ -45,23 +42,23 @@ public class BeforeLoginViewPod extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
 
 
     }
 
-    public void setmDelegate(BeforeLoginDelegate delegate){  //will call from host activity
+    public void setmDelegate(BeforeLoginDelegate delegate) {  //will call from host activity
         mDelegate = delegate;
     }
 
     @OnClick(R.id.btn_to_login)
-    public void onTapToLogin(View view){
+    public void onTapToLogin(View view) {
         mDelegate.onTapToLogin();
 
     }
 
     @OnClick(R.id.btn_to_register)
-    public void onTapToRegister(View view){  //view => the item we clicked
+    public void onTapToRegister(View view) {  //view => the item we clicked
         mDelegate.onTapToRegister();
     }
 

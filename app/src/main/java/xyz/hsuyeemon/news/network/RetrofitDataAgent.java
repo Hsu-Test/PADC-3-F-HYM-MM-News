@@ -4,6 +4,8 @@ package xyz.hsuyeemon.news.network;
  * Created by Dell on 1/11/2018.
  */
 
+        import android.content.Context;
+
         import com.google.gson.Gson;
         import org.greenrobot.eventbus.EventBus;
 
@@ -17,6 +19,7 @@ package xyz.hsuyeemon.news.network;
         import retrofit2.converter.gson.GsonConverterFactory;
         import xyz.hsuyeemon.news.events.SuccessLoginEvent;
         import xyz.hsuyeemon.news.events.LoadedNewsEvent;
+        import xyz.hsuyeemon.news.events.SuccessRegisterEvent;
         import xyz.hsuyeemon.news.network.responses.GetLoginUserResponse;
         import xyz.hsuyeemon.news.network.responses.GetNewsResponse;
 
@@ -74,7 +77,7 @@ public class RetrofitDataAgent implements NewsDataAgent {
     }
 
     @Override
-    public void loadLoginUser(String phoneNo, String password) {
+    public void loadLoginUser(final Context context, String phoneNo, String password) {
 
         Call<GetLoginUserResponse> getLoginUserResponseCall = mNewsApi.loadLoginUser(phoneNo,password);
         getLoginUserResponseCall.enqueue(new Callback<GetLoginUserResponse>() { //response capture
@@ -82,7 +85,7 @@ public class RetrofitDataAgent implements NewsDataAgent {
             public void onResponse(Call<GetLoginUserResponse> call, Response<GetLoginUserResponse> response) {
                 GetLoginUserResponse getLoginUserResponse = response.body();
                 if(getLoginUserResponse != null){
-                    SuccessLoginEvent event = new SuccessLoginEvent(getLoginUserResponse.getLoginUser());
+                    SuccessLoginEvent event = new SuccessLoginEvent(getLoginUserResponse.getLoginUser(),context);
                     EventBus.getDefault().post(event);
                 }
 
@@ -104,6 +107,10 @@ public class RetrofitDataAgent implements NewsDataAgent {
             @Override
             public void onResponse(Call<GetLoginUserResponse> call, Response<GetLoginUserResponse> response) {
                 GetLoginUserResponse getRegisterUserResponse = response.body();
+                if(getRegisterUserResponse != null){
+                    SuccessRegisterEvent event = new SuccessRegisterEvent(getRegisterUserResponse.getLoginUser());
+                    EventBus.getDefault().post(event);
+                }
             }
 
             @Override

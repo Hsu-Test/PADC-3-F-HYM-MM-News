@@ -1,5 +1,6 @@
 package xyz.hsuyeemon.news.network;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -45,7 +46,13 @@ public class OkHttpDataAgent implements NewsDataAgent {
     }
 
     @Override
-    public void loadLoginUser(String email, String password) {
+    public void loadLoginUser(Context context, String phoneNo, String password) {
+
+    }
+
+
+    @Override
+    public void registerUser(String name, String phoneNo, String password) {
 
     }
 

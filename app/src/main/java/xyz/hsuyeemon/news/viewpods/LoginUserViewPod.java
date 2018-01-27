@@ -55,10 +55,10 @@ public class LoginUserViewPod extends RelativeLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ButterKnife.bind(this,this);
+        ButterKnife.bind(this, this);
     }
 
-    public void bindData(LoginUserVO loginUser){
+    public void bindData(LoginUserVO loginUser) {
 
         tvName.setText(loginUser.getName());
         tvPhoneNo.setText(loginUser.getPhoneNo());
@@ -73,12 +73,12 @@ public class LoginUserViewPod extends RelativeLayout {
 
     }
 
-    public void setmDelegate(LoginUserDelegate loginUserDelegate){
+    public void setmDelegate(LoginUserDelegate loginUserDelegate) {
         mDelegate = loginUserDelegate;
     }
 
     @OnClick(R.id.btn_to_logout)
-    public void onTapLogout(View view){
+    public void onTapLogout(View view) {
         mDelegate.onTapLogout();
         UserLogoutEvent event = new UserLogoutEvent();
         EventBus.getDefault().post(event);

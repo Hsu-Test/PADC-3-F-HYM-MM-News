@@ -8,14 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import xyz.hsuyeemon.news.R;
+import xyz.hsuyeemon.news.delegates.LoginScreenDelegate;
 import xyz.hsuyeemon.news.fragments.LoginFragment;
 import xyz.hsuyeemon.news.fragments.RegisterFragment;
 
 /**
  * Created by Dell on 1/20/2018.
+
  */
 
-public class AccountControlActivity extends AppCompatActivity {
+public class AccountControlActivity extends AppCompatActivity implements LoginScreenDelegate{
 
     private static final String IE_SCREEN_TYPE = "IE_SCREEN_TYPE";
     private static final int SCREEN_TYPE_LOGIN = 1;
@@ -53,12 +55,19 @@ public class AccountControlActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fl_container, new RegisterFragment())
                     .commit();
-
         }
 
 
 
+        }
 
+    @Override
+    public void onTapSaleRegister() {
 
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter,R.anim.exit,R.anim.pop_enter,R.anim.pop_exit)
+                .replace(R.id.fl_container, new RegisterFragment())
+                .addToBackStack("ToRegister")
+                .commit();
     }
 }

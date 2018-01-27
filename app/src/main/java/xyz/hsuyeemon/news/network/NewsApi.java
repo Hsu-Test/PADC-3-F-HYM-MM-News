@@ -23,10 +23,10 @@ public interface NewsApi {
     Call<GetLoginUserResponse> loadLoginUser(@Field("phoneNo") String phoneNo,
                                              @Field("password") String password);
 
-    /*@FormUrlEncoded
+    @FormUrlEncoded
     @POST("register.php")
     Call<GetLoginUserResponse> registerUser(@Field("name") String name,
                                             @Field("phoneNo") String phoneNo,
                                             @Field("password") String password);
-*/
+
 }

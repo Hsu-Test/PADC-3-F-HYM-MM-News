@@ -18,6 +18,7 @@ import xyz.hsuyeemon.news.data.models.LoginUserModel;
 import xyz.hsuyeemon.news.delegates.BeforeLoginDelegate;
 import xyz.hsuyeemon.news.delegates.LoginUserDelegate;
 import xyz.hsuyeemon.news.events.SuccessLoginEvent;
+import xyz.hsuyeemon.news.events.SuccessRegisterEvent;
 import xyz.hsuyeemon.news.events.UserLogoutEvent;
 
 /**
@@ -72,9 +73,10 @@ public class AccountControlViewPod extends FrameLayout {
 
     public void refreshUserSession(){
 
-        if(LoginUserModel.getObjInstance().isUserLogin()){
+        if(LoginUserModel.getObjInstance(getContext()).isUserLogin()){
             vpBeforeLogin.setVisibility(View.GONE);
             vpLoginUser.setVisibility(View.VISIBLE);
+            vpLoginUser.bindData(LoginUserModel.getObjInstance(getContext()).getLoginUser());
         }
         else {
             vpBeforeLogin.setVisibility(View.VISIBLE);
@@ -93,5 +95,11 @@ public class AccountControlViewPod extends FrameLayout {
     public void onLogoutUser(UserLogoutEvent event){
         vpBeforeLogin.setVisibility(View.VISIBLE);
         vpLoginUser.setVisibility(View.GONE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRegisterSuccess(SuccessRegisterEvent event){
+        vpLoginUser.setVisibility(View.GONE);
+        vpBeforeLogin.setVisibility(View.VISIBLE);
     }
 }
