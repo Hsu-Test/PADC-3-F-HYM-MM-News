@@ -52,7 +52,11 @@ public class ItemNewsViewHolder extends RecyclerView.ViewHolder {
     public void onNewsItemTap(View view){
        // Toast.makeText(view.getContext(),"News item clicked",Toast.LENGTH_SHORT).show();
         mNewsActionDelegete.onTapNewsItem(mNews);  //relay
+    }
 
+    @OnClick(R.id.fl_send_to)
+    public void onSendToTap(View view){
+        mNewsActionDelegete.onTapSendToButton(mNews);
     }
 
     public void setNews(NewsVO news){

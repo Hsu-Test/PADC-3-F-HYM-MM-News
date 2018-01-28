@@ -10,7 +10,7 @@ public interface NewsActionDelegate {
 
     void onTapNewsItem(NewsVO tappedNews);
     void onTapCommentButton();
-    void onTapSendToButton();
+    void onTapSendToButton(NewsVO tappedNews);
     void onTapFavoriteButton();
 
 }
